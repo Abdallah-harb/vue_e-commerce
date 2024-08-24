@@ -48,14 +48,7 @@
       <v-row>
         <v-col cols="6">
           <ul class="links d-flex text-white justify-space-between">
-            <li>Link1</li>
-            <li>Link1</li>
-            <li>Link1</li>
-            <li>Link1</li>
-            <li>Link1</li>
-            <li>Link1</li>
-            <li>Link1</li>
-            <li>Link1</li>
+            <li class="cursor-pointer" v-for="item in allCategory.category">{{item.title}}</li>
           </ul>
         </v-col>
         <v-col cols="2"></v-col>
@@ -103,10 +96,12 @@
 
 <script setup>
 import {inject, ref} from "vue";
+import {categories} from "../../stores/category.js";
 const emitter = inject('emitter');
 const loading = ref(false);
 const loaded = ref(false)
 
+const allCategory = categories();
 const onClick = ()=>{
   loading.value= true
   setTimeout(() => {

@@ -7,15 +7,8 @@
           <img src="../../assets/images/logo.png" alt="logo" style="width: 50%" >
         </v-col>
         <v-col cols="6">
-          <ul class="links d-flex text-white pr-2 pl-3 justify-content-start gap-4">
-            <li>Link1</li>
-            <li>Link1</li>
-            <li>Link1</li>
-            <li>Link1</li>
-            <li>Link1</li>
-            <li>Link1</li>
-            <li>Link1</li>
-            <li>Link1</li>
+          <ul class="links d-flex text-white pr-2 pl-3 justify-content-start gap-4 ">
+            <li class="cursor-pointer" v-for="item in allCategory.category">{{item.title}}</li>
           </ul>
         </v-col>
         <v-col cols="4">
@@ -47,12 +40,17 @@
 
 <script setup>
 import {inject, ref} from "vue";
+import {categories} from "../../stores/category.js";
 const emitter = inject('emitter');
+
+const allCategory = categories();
 const openCart = ()=>{
   emitter.emit('openCart')
 }
 </script>
 
 <style scoped>
-
+.links{
+  list-style: none;
+}
 </style>
